@@ -1,6 +1,0 @@
-Testing types
-
-	-Unit
-	-Integration
-	-Acceptamce
-	-...and more
