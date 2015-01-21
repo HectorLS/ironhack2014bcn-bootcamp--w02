@@ -19,20 +19,18 @@ class Reader
 		@series_titles = series_file.split("\n")   #Array of movies titles.
 		@series_data = []
 		#Other way using readlines like 
-	end
-
-	def show_info
-			@series_data = @series_titles.map do |title|
+		@series_data = @series_titles.map do |title|
 				Searcher.new.get_serie_info(title)
 			end	
-	
-			# puts most_seasons_from
+		end
+
+			
+			#most_seasons_from
 			# puts most_episodes_from
-			#best_rated
-	end
+
 
 	def most_seasons_from
-		@series_data.sort {|a,b| a.seasons <=> b.seasons}.last.title
+		@series_data.sort {|a,b| a.seasons <=> b.seasons}.last.title.to_s
 	end
 
 	def most_episodes_from
@@ -74,8 +72,8 @@ class Searcher
 end
 
 
-# series_reader = Reader.new("tvshows.txt")
-# puts series_reader.show_info
+#series_reader = Reader.new("tvshows.txt")
+ #puts series_reader.show_info
 
 
 
