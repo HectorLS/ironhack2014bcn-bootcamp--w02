@@ -1,0 +1,30 @@
+		<span>Join to the Ironhack community: </span>
+			<form action="/newstudent" method="post">
+				<input type="text" name="name" placeholder="Your name">
+				<input type="text" name="surnames" placeholder="Your surname">
+				<input type="date" name="birthday" placeholder="birthday">
+				<input type="number" name="number_of_dogs" placeholder="How many dogs you have(number)">
+				<input type="url" name="website" placeholder="Your website">
+				<p>Do you have programming experience</p>
+				<input type="radio" name="first_programming_experience" value="Yes" checked>Yes
+				<input type="radio" name="first_programming_experience" value="No">No
+				<br>
+				<input type="submit" value="Join us">
+			</form>
+		<h2>The Ironhack Student list</h2>
+		<ol>
+			<% if @students_list.length > 0 %>
+				<% @students_list.each do |student| %>
+
+					<% name = student.name %>
+					<% surnames = student.surnames %>
+					<% birthday = student.birthday %>
+					<% website = student.website %>
+					<% number_of_dogs = student.number_of_dogs %>
+					<% first_programming_experience = student.first_programming_experience %>
+
+					<li><strong>Student </strong><%= "#{name} #{surnames} |#{birthday}| DOGS: #{number_of_dogs} . Experience programming: #{first_programming_experience}" %></li>
+				<% end %>
+			<% end %>
+		</ol>
+		<br>

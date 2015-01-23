@@ -36,8 +36,8 @@ describe Calculator do
 
   describe "#multiply" do 
     it "should multiply 6 and 2, result: 12" do
-      addition = @calculator.multiply(6,2)
-      expect(addition).to eq(12)
+      multiply = @calculator.multiply(6,2)
+      expect(multiply).to eq(12)
     end
   end
 end

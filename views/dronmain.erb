@@ -1,0 +1,22 @@
+
+			<span>Sign up and be one of us: </span>
+			<form action="/signup" method="post">
+				<input type="text" name="name" placeholder="First Name">
+				<input type="password" name="password" placeholder="Password">
+<!-- 				<input type="text" name="nickname" placeholder="Username">
+				<input type="number" name="age" placeholder="Age"> -->
+				<input type="submit" value="Join us">
+			</form>
+		<p>The community :)</p>
+		<ol>
+			<% @users_list.each do |user| %>
+				<% id = user.keys.first %>
+				<% name = user[id].keys.first %>
+				<% pass = user[id][name] %>
+
+				<li><%= "User nº #{id} - name #{name}  with password: #{pass} " %></li>
+			<% end %>
+			
+		</ol>
+		<br>
+		<span>Número de IDs: <%= @id %></span>

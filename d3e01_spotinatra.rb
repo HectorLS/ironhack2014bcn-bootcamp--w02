@@ -1,6 +1,7 @@
 #encoding: utf-8
 require 'sinatra'
 require 'sinatra/reloader'
+require 'pp'
 # SL6. Spotinatra
 
 # In the times of Frank Sinatra, there was no Spotify. People had to see him live, or listen to him through a timetable. Can you imagine to
@@ -24,29 +25,52 @@ require 'sinatra/reloader'
 # “IS WORTH F***ING NOTHING”*.
 
 # * I am not responsible from Sinatra words. I mean, he said it in his way.
+set :port, 3000
+set :bind, '0.0.0.0'
 
 
-set :port, 5000
-set :bind, '0.0.0.0.'
 
-	@@songs_list = {}
-#	attr_accessor :artist :song
-get '/' do
-	puts "Hello you are in Spotinatra"
-	puts "Please create a list with five songs"
-end
-
-
-post while @songs_list < 5
-		@song = gets.chomp
-		@@songs_list << song
-		puts "#{@song} is a good song bro, give me another"
-		redirect ('/')
+class Mp3
+	def initialize
+		@song_list = []
 	end
-    redirect('/enough')
+
+	def add_song(artist, title)
+		@song_list.push([artist, title])
+	end
+
+	def show_songs
+		@song_list.to_s
+	end
+
+	def song_list
+		@song_list.length
+	end
 end
 
+walkman = Mp3.new
+
+get '/' do
+	if walkman.song_list > 3
+		redirect '/enough'
+	else
+		walkman.show_songs
+	end
+end
+
+post '/songs/new' do
+	walkman.add_song(params["artist"], params["title"])
+	puts walkman.song_list
+	redirect "/"
+end
 
 get '/enough' do
-	puts "Enough songs"
+	"Enough songs bro"
+	walkman.show_songs
 end
+
+
+# 		curl -L --data "artist=ACDC 2&title=Highway to hell" 0.0.0.0:3000/songs/new
+# 		curl -L --data "artist=Daddy Yankee&title=La Gasolina" 0.0.0.0:3000/songs/new
+# 		curl -L --data "artist=Gorka y Adriá&title=Los Shublimes" 0.0.0.0:3000/songs/new
+# 		curl -L --data "artist=Justin Bieber&title=I'm crap" 0.0.0.0:3000/songs/new

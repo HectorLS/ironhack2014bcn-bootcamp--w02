@@ -1,0 +1,37 @@
+		<br>
+		<h3>Shout something bro</h3>
+			<form action="/newshout" method="post" id="shout">
+
+				<select name="user" form="shout">
+					<% if @users_list.length > 0 %>
+						<% @users_list.each do |user| %>
+							<% handle = user.handle %>
+							<option value="creating_at"><%= handle%></option>
+						<% end %>
+					<% end %>
+				</select>
+
+				<input type="text" name="message" maxlength="200" placeholder="SHout here" required>
+
+				<input type="submit" value="Shout this">
+				
+			</form>
+
+		<h2>Shouts wall</h2>
+		<ol>
+			<li><strong>User &rArr; </strong><%= "#{name} |#{handle}| shout:"%>
+				<p><% if @wall.length > 0 %>
+				<% @wall.each do |message|
+
+				<% message = message.message %>
+				<% handle = message.creating_at %>
+				<% date = Date.new
+				<h3><%= creating_at %></h3>		
+				<%= message %>
+				<%= date %>
+				</p>
+			</li>
+				<% end %>
+			<% end %>
+		</ol>
+		<br>

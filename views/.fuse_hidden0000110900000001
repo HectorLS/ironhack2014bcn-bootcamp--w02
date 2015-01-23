@@ -1,0 +1,36 @@
+	<h1>Welcome to the online-Calculator</h1>
+	<h2>Here you can:</h2>
+	<ul>
+		<li>
+		<span>Add: </span>
+		<form action="/result" method="post">
+			<input type="a" placeholder="First value">
+			<input type="b" placeholder="Second value">
+			<input type="submit">
+		</form>
+		</li>
+<!-- 		<li>
+		<span>Substract: </span>
+		<form action="/result" method="post">
+			<input type="a" placeholder="First value">
+			<input type="b" placeholder="Second value">
+			<input type="submit">
+		</form>
+		</li>
+		<li>
+		<span>Multiply: </span>
+		<form action="/result" method="post">
+			<input type="a" placeholder="First value">
+			<input type="b" placeholder="Second value">
+			<input type="submit">
+		</form>
+		</li>
+		<li>
+		<span>Divide: </span>
+		<form action="/result" method="post">
+			<input type="a" placeholder="First value">
+			<input type="b" placeholder="Second value">
+			<input type="submit">
+		</form>
+		</li> -->
+	</ul>
